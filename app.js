@@ -36,7 +36,7 @@ let month = months[now.getMonth()];
 let date = now.getDate();
 let year = now.getFullYear();
 let hour = now.getHours();
-let minute = now.getMinutes();
+let minute = String(now.getMinutes()).padStart(2, "0");
 
 let currentDT = document.querySelector("#current-Date-Time");
 
@@ -89,6 +89,14 @@ document
 
       let tempDisplay = document.querySelector("#temp");
       tempDisplay.innerHTML = `${currentTemp}°C`;
+
+      let humidityDisplay = document.querySelector("#humidity");
+      let humidityValue = response.data.temperature.humidity;
+      humidityDisplay.innerHTML = `${humidityValue}% Humidity`;
+
+      let windDisplay = document.querySelector("#wind");
+      let windValue = response.data.wind.speed;
+      windDisplay.innerHTML = `${windValue} m/sec Wind Speed`;
 
       let iconDisplay = document.querySelector("#condition-icon");
       let conditionIcon = response.data.condition.icon_url;

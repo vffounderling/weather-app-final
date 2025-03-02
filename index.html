@@ -16,24 +16,11 @@
   </head>
   <body>
     <section class="app">
-      <header class="logos">
-        <img
-          src="images/undraw_weather-app_4cp0 (1).svg"
-          alt="Weather App Illustration"
-          id= "condition-icon"
-        />
-        <br />
-        <img
-          class="sc-logo"
-          src="images/logo-shecodes-3dfa60aeab8ef361842da5a2b6d46db3af1b7afafefee3dde0a9846389de754b.png"
-          alt="She Codes Logo"
-        />
-      </header>
       <main>
         <div class="search-city">
           <form id="search-ideas">
             <input
-              type="text" 
+              type="text"
               placeholder="Enter a city..."
               required
               autocomplete="off"
@@ -41,34 +28,58 @@
               class="search-input"
               id="search-input-value"
             />
-            <input type="submit" value="Search" class="search-btn" id="search-btn" />
+            <input
+              type="submit"
+              value="Search"
+              class="search-btn"
+              id="search-btn"
+            />
           </form>
           <hr />
-          <div class="weather-details">
-            <p id="current-Date-Time">
-              Current Day, Date & Time
-            </p>
-        </div>
-        <div class="current-weather">
-          <h1 id="city"></h1>
-          <div class="current-temp" id="temp">
-            <span class="material-icons" id="weather-icon"></span> —°C
-          </div>
         </div>
         <div class="weather-details">
-          <p id="conditions">
-           <br />
-            Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
-          </p>
+          <p id="current-Date-Time">Current Day, Date & Time</p>
         </div>
-        <br />
-        <div class="forecast">
-          <div>Sun</div>
-          <div>Mon</div>
-          <div>Tue</div>
-          <div>Wed</div>
-          <div>Thu</div>
+        <div class="weather-grid">
+            <div class="current-weather">
+              <div class="current-temp" id="temp">
+                <span id="weather-icon"></span>—&deg;C
+              </div>
+              <div>
+                <img
+                  src="images/undraw_weather-app_4cp0 (1).svg"
+                  alt="Weather App Illustration"
+                  id="condition-icon"
+                  class="weather-icon"
+                />
+            </div>
+          </div>
+          <div class="extra-weather">
+            <div>
+            <h1 id="city">City</h1>
+            </div>
+            <div>
+              <p id="conditions">
+                Conditions
+              </p>
+            </div>
+            <div>
+              <p id="humidity">- %</p>
+            </div>
+            <div>
+              <p id="wind">- m/sec</p>
+            </div>
+          </div>
         </div>
+      </div>
+      <br />
+      <div class="forecast">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+      </div>
       </main>
     </section>
     <footer>
@@ -77,7 +88,14 @@
         <a href="https://github.com/vffounderling" target="_blank"
           >Melanie Boyd</a
         >
-        and is on <a href="https://github.com/vffounderling/weather-app-final" target="_blank"> GitHub</a> and hosted on
+        and is on
+        <a
+          href="https://github.com/vffounderling/weather-app-final"
+          target="_blank"
+        >
+          GitHub</a
+        >
+        and hosted on
         <a href="https://letitrain.netlify.app/" target="_blank"> Netlify.</a>
       </p>
     </footer>

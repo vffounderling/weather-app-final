@@ -8,6 +8,13 @@ header {
 h1 {
   color: #ff9c6d;
 }
+
+#temp {
+  color: #ff9c6d;
+  font-size: 36px;
+  padding: 10px;
+}
+
 footer {
   display: block;
   margin: 0 auto;
@@ -22,26 +29,21 @@ a {
   color: #fd5959;
 }
 hr {
-  margin: 10px;
+  margin: 20px 10px;
   color: #afc5ff;
+  max-width: 90%;
 }
 .app {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   margin: 50px auto;
   padding: 10px;
   background-color: white;
   border-radius: 20px;
-  width: 600px;
+  max-width: 80%;
 }
-.logos {
-  display: block;
-  margin: 40px;
-  text-align: center;
-}
-.sc-logo {
-  max-width: 50px;
-}
+
 .search-input {
   font-family: "Quicksand", serif;
   border: 1px solid #ff9c6d;
@@ -49,7 +51,7 @@ hr {
   background-color: #fcff8280;
   padding: 10px 15px;
   margin: 10px;
-  width: 200px;
+  width: 500px;
 }
 .search-input:focus {
   outline: none;
@@ -72,21 +74,36 @@ hr {
 }
 .current-weather {
   display: flex;
-  justify-content: space-evenly;
-  vertical-align: middle;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  text-align: center;
 }
+
+.weather-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.current-summary {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
 .current-temp {
   font-size: 36px;
   padding: 10px;
 }
 .weather-details {
   display: block;
-  margin: 0 auto;
+  margin: 20px;
+  padding: 10px;
   text-align: center;
+  font-size: large;
 }
-.material-icons {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-}
+
 .forecast {
   display: flex;
   justify-content: space-around;
