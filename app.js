@@ -1,3 +1,5 @@
+//display data & time
+
 function showDateTime() {
   currentDT.innerHTML = `${day}, ${date} ${month} ${year} at ${hour}:${minute}`;
 }
@@ -40,6 +42,8 @@ let currentDT = document.querySelector("#current-Date-Time");
 
 showDateTime();
 
+//display city input on the page
+
 function showCityInput(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#search-input-value");
@@ -49,6 +53,8 @@ function showCityInput(event) {
 let form = document.querySelector("#search-ideas");
 
 form.addEventListener("submit", showCityInput);
+
+//display temp for input city using API
 
 function roundTemp(temp) {
   console.log(temp);
@@ -98,29 +104,3 @@ document
       return Math.round(currentTemp);
     }
   });
-
-//function showCity(weather) {
-// const roundedTemp = roundTemp(weather.temp);
-// console.log(weather.temp);
-
-//  if (userCity === weather.city.toLowerCase()) {
-//   alert(
-//     `It is currently ${roundedTemp}° in ${weather.city} with a humidity of ${weather.humidity}%.`
-//   );
-// }
-//}
-
-//let cityFound = false;
-
-//weather.forEach(function (item) {
-// if (userCity === item.city.toLowerCase()) {
-//   cityFound = true;
-//   showCity(item);
-// }
-//});
-
-//if (!cityFound) {
-// alert(
-//   `Sorry, we don't know the weather for this city, try going to https://www.google.com/search?q=weather+${userCity}.`
-// );
-//}
