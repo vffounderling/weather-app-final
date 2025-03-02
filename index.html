@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>My weather application</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Annie+Use+Your+Telescope&family=Athiti:wght@200;300;400;500;600;700&family=Bentham&family=Indie+Flower&family=Patrick+Hand+SC&family=Playwrite+DE+Grund:wght@100..400&family=Poiret+One&family=Quicksand:wght@300..700&display=swap");
+    </style>
+  </head>
+  <body>
+    <section class="app">
+      <header class="logos">
+        <img
+          src="images/undraw_weather-app_4cp0 (1).svg"
+          alt="Weather App Illustration"
+          id= "condition-icon"
+        />
+        <br />
+        <img
+          class="sc-logo"
+          src="images/logo-shecodes-3dfa60aeab8ef361842da5a2b6d46db3af1b7afafefee3dde0a9846389de754b.png"
+          alt="She Codes Logo"
+        />
+      </header>
+      <main>
+        <div class="search-city">
+          <form id="search-ideas">
+            <input
+              type="text" 
+              placeholder="Enter a city..."
+              required
+              autocomplete="off"
+              autofocus="on"
+              class="search-input"
+              id="search-input-value"
+            />
+            <input type="submit" value="Search" class="search-btn" id="search-btn" />
+          </form>
+          <hr />
+          <div class="weather-details">
+            <p id="current-Date-Time">
+              Current Day, Date & Time
+            </p>
+        </div>
+        <div class="current-weather">
+          <h1 id="city"></h1>
+          <div class="current-temp" id="temp">
+            <span class="material-icons" id="weather-icon"></span> —°C
+          </div>
+        </div>
+        <div class="weather-details">
+          <p id="conditions">
+           <br />
+            Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
+          </p>
+        </div>
+        <br />
+        <div class="forecast">
+          <div>Sun</div>
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+        </div>
+      </main>
+    </section>
+    <footer>
+      <p>
+        This project was coded by
+        <a href="https://github.com/vffounderling" target="_blank"
+          >Melanie Boyd</a
+        >
+        and is on <a href="https://github.com/vffounderling/weather-app" target="_blank"> GitHub</a> and hosted on
+        <a href="https://melsweatherapp.netlify.app/" target="_blank"> Netlify.</a>
+      </p>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

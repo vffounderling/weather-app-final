@@ -1,0 +1,101 @@
+body {
+  background-color: #afc5ff80;
+  font-family: "Quicksand", serif;
+}
+header {
+  display: block;
+}
+h1 {
+  color: #ff9c6d;
+}
+footer {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+img {
+  max-width: 150px;
+  padding: 5px;
+}
+a {
+  text-decoration: none;
+  color: #fd5959;
+}
+hr {
+  margin: 10px;
+  color: #afc5ff;
+}
+.app {
+  display: flex;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 10px;
+  background-color: white;
+  border-radius: 20px;
+  width: 600px;
+}
+.logos {
+  display: block;
+  margin: 40px;
+  text-align: center;
+}
+.sc-logo {
+  max-width: 50px;
+}
+.search-input {
+  font-family: "Quicksand", serif;
+  border: 1px solid #ff9c6d;
+  border-radius: 20px;
+  background-color: #fcff8280;
+  padding: 10px 15px;
+  margin: 10px;
+  width: 200px;
+}
+.search-input:focus {
+  outline: none;
+  border: 2px solid #ff9c6d;
+}
+.search-btn {
+  font-family: "Quicksand", serif;
+  font-weight: bold;
+  border: 1px solid #ff9c6d;
+  border-radius: 20px;
+  background-color: #fcff8280;
+  padding: 10px 15px;
+  margin: 10px;
+  color: #fd5959;
+  transition: all 200ms ease-in-out;
+}
+.search-btn:hover {
+  color: #fcff82;
+  background-color: #fd5959;
+}
+.current-weather {
+  display: flex;
+  justify-content: space-evenly;
+  vertical-align: middle;
+}
+.current-temp {
+  font-size: 36px;
+  padding: 10px;
+}
+.weather-details {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+.material-icons {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+.forecast {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  font-weight: bold;
+}
+#search-ideas {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+  padding: 5px;
+}
