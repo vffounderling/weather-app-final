@@ -51,7 +51,8 @@ hr {
   background-color: #fcff8280;
   padding: 10px 15px;
   margin: 10px;
-  width: 500px;
+  width: 80%;
+  max-width: 500px;
 }
 .search-input:focus {
   outline: none;
@@ -67,6 +68,8 @@ hr {
   margin: 10px;
   color: #fd5959;
   transition: all 200ms ease-in-out;
+  width: auto;
+  flex-grow: 1;
 }
 .search-btn:hover {
   color: #fcff82;
@@ -96,6 +99,7 @@ hr {
   font-size: 36px;
   padding: 10px;
 }
+
 .weather-details {
   display: block;
   margin: 20px;
@@ -106,13 +110,44 @@ hr {
 
 .forecast {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  row-gap: 5px;
   margin: 10px;
   font-weight: bold;
+  text-align: center;
 }
+
 #search-ideas {
   display: flex;
   justify-content: space-evenly;
   margin: 20px;
   padding: 5px;
+}
+
+/*responsiveness*/
+
+@media (max-width: 768px) {
+  .search-input {
+    width: 90%;
+    max-width: 400px;
+  }
+  #search-ideas {
+    flex-direction: column;
+    align-items: center;
+  }
+  .search-btn {
+    width: 90%;
+    flex-grow: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input {
+    width: 95%;
+    max-width: 400px;
+  }
+  .search-btn {
+    width: 95%; /* Make the button take up 95% width */
+    flex-grow: 0; /* Prevent the button from growing excessively */
+  }
 }

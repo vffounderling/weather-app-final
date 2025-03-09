@@ -42,73 +42,76 @@ let currentDT = document.querySelector("#current-Date-Time");
 
 showDateTime();
 
-//display city input on the page
-
-function showCityInput(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#search-input-value");
-  console.log(cityInput.value);
-}
+//display city input & current temp on the page
 
 let form = document.querySelector("#search-ideas");
+let city;
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  let cityInput = document.getElementById("search-input-value");
+  city = cityInput.value;
 
-form.addEventListener("submit", showCityInput);
+  let apiKey = "6d79336304f779ad3bt855cfc1ao01b4";
+  let cityTrim = city.toLowerCase();
+  let weatherURL = `https://api.shecodes.io/weather/v1/current?query=${cityTrim}&key=${apiKey}&units=metric`;
 
-//display temp for input city using API
+  axios.get(weatherURL).then(showTemp);
 
-function roundTemp(temp) {
-  console.log(temp);
-  return Math.round(temp);
-}
+  function showTemp(response) {
+    let cityDisplay = document.querySelector("#city");
+    cityDisplay.innerHTML = response.data.city;
 
-function showTemp(response) {
-  console.log(response.data);
-  console.log(response.data.temperature.current);
-}
+    let currentTemp = response.data.temperature.current;
+    currentTemp = roundTemp(currentTemp);
 
-document
-  .getElementById("search-ideas")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    var cityInput = document.getElementById("search-input-value");
-    var city = cityInput.value;
-    console.log(city);
+    let tempDisplay = document.querySelector("#temp");
+    tempDisplay.innerHTML = `${currentTemp}°C`;
 
-    let apiKey = "6d79336304f779ad3bt855cfc1ao01b4";
-    let cityTrim = city.toLowerCase();
-    let weatherURL = `https://api.shecodes.io/weather/v1/current?query=${cityTrim}&key=${apiKey}&units=metric`;
+    let humidityDisplay = document.querySelector("#humidity");
+    let humidityValue = response.data.temperature.humidity;
+    humidityDisplay.innerHTML = `${humidityValue}% Humidity`;
 
-    axios.get(weatherURL).then(showTemp);
+    let windDisplay = document.querySelector("#wind");
+    let windValue = response.data.wind.speed;
+    windDisplay.innerHTML = `${windValue} m/sec Wind Speed`;
 
-    function showTemp(response) {
-      let cityDisplay = document.querySelector("#city");
-      cityDisplay.innerHTML = response.data.city;
+    let iconDisplay = document.querySelector("#condition-icon");
+    let conditionIcon = response.data.condition.icon_url;
+    iconDisplay.src = `${conditionIcon}`;
 
-      let currentTemp = response.data.temperature.current;
-      currentTemp = roundTemp(currentTemp);
+    let conditionsDisplay = document.querySelector("#conditions");
+    let conditionsData = response.data.condition.description;
+    let conditions = conditionsData.toUpperCase();
+    conditionsDisplay.innerHTML = `${conditions}`;
+  }
 
-      let tempDisplay = document.querySelector("#temp");
-      tempDisplay.innerHTML = `${currentTemp}°C`;
+  function roundTemp(currentTemp) {
+    return Math.round(currentTemp);
+  }
+});
 
-      let humidityDisplay = document.querySelector("#humidity");
-      let humidityValue = response.data.temperature.humidity;
-      humidityDisplay.innerHTML = `${humidityValue}% Humidity`;
+//display forecast info
 
-      let windDisplay = document.querySelector("#wind");
-      let windValue = response.data.wind.speed;
-      windDisplay.innerHTML = `${windValue} m/sec Wind Speed`;
+function displayForecast() {
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
 
-      let iconDisplay = document.querySelector("#condition-icon");
-      let conditionIcon = response.data.condition.icon_url;
-      iconDisplay.src = `${conditionIcon}`;
-
-      let conditionsDisplay = document.querySelector("#conditions");
-      let conditionsData = response.data.condition.description;
-      let conditions = conditionsData.toUpperCase();
-      conditionsDisplay.innerHTML = `${conditions}`;
-    }
-
-    function roundTemp(currentTemp) {
-      return Math.round(currentTemp);
-    }
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+    <div class="daily-forecast">
+      <div class="forecast-day">${day}</div>
+      <div class="forecast-icon">conditions icon</div>
+      <div class="forecast-max">max temp</div>
+      <div class="forecast-min">min temp</div>
+    </div>
+    `;
   });
+
+  let forecastElement = document.querySelector("#forecast");
+
+  forecastElement.innerHTML = forecastHtml;
+}
+
+displayForecast();
