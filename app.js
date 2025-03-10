@@ -55,7 +55,16 @@ form.addEventListener("submit", function (event) {
   let cityTrim = city.toLowerCase();
   let weatherURL = `https://api.shecodes.io/weather/v1/current?query=${cityTrim}&key=${apiKey}&units=metric`;
 
-  axios.get(weatherURL).then(showTemp);
+  //error handling for apis
+
+  function handleError(error) {
+    console.error("API Error:", error);
+    alert("There was an error fetching the weather data. Please try again.");
+  }
+
+  axios.get(weatherURL).then(showTemp).catch(handleError);
+
+  //axios.get(weatherURL).then(showTemp);
 
   function showTemp(response) {
     let cityDisplay = document.querySelector("#city");
@@ -83,35 +92,50 @@ form.addEventListener("submit", function (event) {
     let conditionsData = response.data.condition.description;
     let conditions = conditionsData.toUpperCase();
     conditionsDisplay.innerHTML = `${conditions}`;
+
+    getForecast(response.data.city);
   }
 
+  //get forecast info from api
+  function getForecast(city) {
+    let apiKey = "6d79336304f779ad3bt855cfc1ao01b4";
+    let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+
+    axios.get(apiURL).then(displayForecast).catch(handleError);
+  }
+
+  //round temp values
   function roundTemp(currentTemp) {
     return Math.round(currentTemp);
   }
+
+  //display forecast info
+
+  function displayForecast(response) {
+    let forecastHtml = "";
+
+    response.data.daily.forEach(function (forecast, index) {
+      if (index < 5) {
+        let forecastDate = new Date(forecast.time * 1000);
+        let day = forecastDate.toLocaleDateString("en-US", {
+          weekday: "short",
+        });
+
+        forecastHtml =
+          forecastHtml +
+          `
+      <div class="daily-forecast">
+        <div class="forecast-day">${day}</div>
+        <div class="forecast-icon">${forecast.daily.condition.icon_url}</div>
+        <div class="forecast-max">${forecast.daily.temperature.maximum}°C</div>
+        <div class="forecast-min">${forecast.daily.temperature.minimum}°C</div>
+      </div>
+      `;
+      }
+    });
+
+    let forecastElement = document.querySelector("#forecast");
+
+    forecastElement.innerHTML = forecastHtml;
+  }
 });
-
-//display forecast info
-
-function displayForecast() {
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
-  let forecastHtml = "";
-
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
-    <div class="daily-forecast">
-      <div class="forecast-day">${day}</div>
-      <div class="forecast-icon">conditions icon</div>
-      <div class="forecast-max">max temp</div>
-      <div class="forecast-min">min temp</div>
-    </div>
-    `;
-  });
-
-  let forecastElement = document.querySelector("#forecast");
-
-  forecastElement.innerHTML = forecastHtml;
-}
-
-displayForecast();
