@@ -9,13 +9,18 @@ h1 {
   color: #ff9c6d;
 }
 
+p {
+  color: navy;
+  font-weight: 600;
+}
+
 #temp {
   color: #ff9c6d;
   font-size: 36px;
   padding: 10px;
 }
 
-footer {
+.footer {
   display: block;
   margin: 0 auto;
   text-align: center;
@@ -38,10 +43,10 @@ hr {
   justify-content: center;
   flex-wrap: wrap;
   margin: 50px auto;
-  padding: 10px;
+  padding: 25px 50px;
   background-color: white;
   border-radius: 20px;
-  max-width: 80%;
+  width: fit-content;
 }
 
 .search-input {
@@ -115,6 +120,18 @@ hr {
   margin: 10px;
   font-weight: bold;
   text-align: center;
+}
+
+.forecast-day {
+  color: navy;
+}
+
+.forecast-max {
+  color: #fd5959;
+}
+.forecast-min {
+  color: #fd5959;
+  font-weight: normal;
 }
 
 #search-ideas {
